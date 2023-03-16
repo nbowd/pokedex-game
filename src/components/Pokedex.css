@@ -10,6 +10,7 @@
     --light-green: #98cb98;
     --mint-green: #3ab47d;
     --gray: #585858;
+    --light-gray: #b8b8b8;
     --thin-border: 2px solid black;
     --normal-border: 3px solid black;
     --thick-border: 4px solid black;
@@ -473,6 +474,7 @@
     height: 3.5rem;
     border: var(--thin-border);
     border-radius: 4px;   
+
 }
 
 .right-thin-buttons {
@@ -535,4 +537,16 @@
     display: flex;
     justify-content: space-between;
     width: 90%;
+}
+
+.pressed {
+    background-color: #90dfff;
+    font-weight: bold;
+    border: 3px inset white;
+    
+}
+
+.gen-title {
+    margin-top: .5rem;
+    font-size: 1rem;
 }

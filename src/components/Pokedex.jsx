@@ -2,7 +2,7 @@ import './Pokedex.css'
 import React from 'react';
 import { ImagePixelated } from "react-pixelate"
 
-function Pokedex({image, name, guess, setGuess, pixels, handleCheckGuess, gameState, pixelDensity}) {
+function Pokedex({image, name, guess, setGuess, pixels, handleCheckGuess, gameState, pixelDensity, gensSelected, setGensSelected}) {
     function checkEnter(e) {
         if (e.key === 'Enter') { 
             handleEnter();
@@ -13,6 +13,18 @@ function Pokedex({image, name, guess, setGuess, pixels, handleCheckGuess, gameSt
         handleCheckGuess();
         setGuess('')
     }
+
+    function handleGenSelection(e, gen){
+        if (gensSelected.includes(gen) && gensSelected.length === 1) return
+        e.target.classList.toggle('pressed')
+
+        if (gensSelected.includes(gen)) {
+            setGensSelected(gensSelected.filter(saved => saved !== gen))
+        } else {
+            setGensSelected([...gensSelected, gen])
+        }
+    }
+
     return (
         <div className='pokedex'>
             <div className="pokedex-left">
@@ -45,7 +57,7 @@ function Pokedex({image, name, guess, setGuess, pixels, handleCheckGuess, gameSt
                 <div className="interface">
                     <div className="main-screen-outer white">
                         <div className="top-screen-buttons">
-                            <div className={`top-button ${gameState === ''? 'red': 'gray'}`}></div>
+                            <div className={`top-button ${gameState !== 'lose'? 'red': 'gray'}`}></div>
                             <div className={`top-button ${pixelDensity <= 3? 'red': 'gray'}`}></div>
                             <div className={`top-button ${pixelDensity <= 2? 'red': 'gray'}`}></div>
                             <div className={`top-button ${pixelDensity <= 1? 'red': 'gray'}`}></div>
@@ -53,8 +65,13 @@ function Pokedex({image, name, guess, setGuess, pixels, handleCheckGuess, gameSt
                         </div>
                         <div className="main-screen">
                             <div className="screen">
-                            {/* #98cb98 */}
-                                <ImagePixelated src={image} width={224} height={224} centered={true} pixelSize={pixels} fillTransparencyColor={"#98cb98"}/>
+                                <ImagePixelated 
+                                    src={image} 
+                                    width={224} 
+                                    height={224} 
+                                    centered={true} 
+                                    pixelSize={pixels} 
+                                    fillTransparencyColor={"#98cb98"}/>
                             </div>
                         </div>
                         <div className="bottom-screen-buttons">
@@ -117,9 +134,8 @@ function Pokedex({image, name, guess, setGuess, pixels, handleCheckGuess, gameSt
                     <svg height="125px" width="400px">
                         <polyline
                         points="0,0 0,71 278,71 298,118 400,118 400,0 0,0"
-                        style={{fill: 'white', stroke: 'none', strokeWidth: '3'}}
+                        style={{fill: '#b8b8b8', stroke: 'none', strokeWidth: '3'}}
                         />
-                        {/* 0,75 95,75 125,28 400,28 */}
                         <polyline
                         points="0,71 278,71 298,118 400,118"
                         style={{fill: 'none', stroke: 'black', strokeWidth: '3'}}
@@ -128,20 +144,34 @@ function Pokedex({image, name, guess, setGuess, pixels, handleCheckGuess, gameSt
                 </div>
                 <div className="interface">
                     <div className="secondary-screen" >
-                        <input type="text" spellCheck="false" className="guess-input" value={guess} placeholder={gameState === ''? 'Guess Name': `You ${gameState}`} onChange={(e) => setGuess(e.target.value)} onKeyUp={(e)=>checkEnter(e)} disabled={gameState !== ''} maxLength="12"/>
-                        <button className="guess-enter" onClick={handleEnter}>{gameState === ''? 'Enter': 'Replay?'}</button>
+                        <input 
+                            type="text" 
+                            spellCheck="false" 
+                            className="guess-input" 
+                            value={guess} 
+                            placeholder={gameState === ''? 'Guess Name': `You ${gameState}`} 
+                            onChange={(e) => setGuess(e.target.value)} 
+                            onKeyUp={(e)=>checkEnter(e)} disabled={gameState !== ''} maxLength="12"
+                        />
+                        <button 
+                            className="guess-enter" 
+                            onClick={handleEnter}>{gameState === ''? 'Enter': 'Replay?'}
+                        </button>
                     </div>
+
+                    <div className='gen-title'>Generations</div>
+
                     <div className="gen-buttons">
-                        <button className="square-button periwinkle"></button>
-                        <button className="square-button periwinkle"></button>
-                        <button className="square-button periwinkle"></button>
-                        <button className="square-button periwinkle"></button>
-                        <button className="square-button periwinkle"></button>
-                        <button className="square-button periwinkle"></button>
-                        <button className="square-button periwinkle"></button>
-                        <button className="square-button periwinkle"></button>
-                        <button className="square-button periwinkle"></button>
-                        <button className="square-button periwinkle"></button>
+                        <button className={`square-button periwinkle ${gensSelected.includes('gen1')? 'pressed': ''}`} onClick={(e) => handleGenSelection(e, 'gen1')} >1</button>
+                        <button className={`square-button periwinkle ${gensSelected.includes('gen2')? 'pressed': ''}`} onClick={(e) => handleGenSelection(e, 'gen2')} >2</button>
+                        <button className={`square-button periwinkle ${gensSelected.includes('gen3')? 'pressed': ''}`} onClick={(e) => handleGenSelection(e, 'gen3')} >3</button>
+                        <button className={`square-button periwinkle ${gensSelected.includes('gen4')? 'pressed': ''}`} onClick={(e) => handleGenSelection(e, 'gen4')} >4</button>
+                        <button className={`square-button periwinkle ${gensSelected.includes('gen5')? 'pressed': ''}`} onClick={(e) => handleGenSelection(e, 'gen5')} >5</button>
+                        <button className={`square-button periwinkle ${gensSelected.includes('gen6')? 'pressed': ''}`} onClick={(e) => handleGenSelection(e, 'gen6')} >6</button>
+                        <button className={`square-button periwinkle ${gensSelected.includes('gen7')? 'pressed': ''}`} onClick={(e) => handleGenSelection(e, 'gen7')} >7</button>
+                        <button className={`square-button periwinkle ${gensSelected.includes('gen8')? 'pressed': ''}`} onClick={(e) => handleGenSelection(e, 'gen8')} >8</button>
+                        <button className={`square-button periwinkle ${gensSelected.includes('gen9')? 'pressed': ''}`} onClick={(e) => handleGenSelection(e, 'gen9')} >9</button>
+                        <button className="square-button periwinkle" ></button>
                     </div>
                     <div className="right-thin-buttons">
                         <div className="square-thin-button gray"></div>
