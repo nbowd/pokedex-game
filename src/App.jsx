@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import Pokedex from './components/Pokedex';
 
+import titleText from './assets/pokemonTitle.png'
+
 function App() {
   const pixels = [30, 20, 15, 10, 5];
    const genRanges = {
@@ -82,6 +84,7 @@ function App() {
 
   return (
     <div className="App">
+      <img src={titleText} alt="" className='title-text'/>
       <Pokedex 
         image={pokemon.sprites?.front_default} 
         name={pokemon.name? pokemon.name: ''} 

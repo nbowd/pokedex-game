@@ -474,7 +474,10 @@
     height: 3.5rem;
     border: var(--thin-border);
     border-radius: 4px;   
+}
 
+.square-button:hover {
+    cursor: pointer;
 }
 
 .right-thin-buttons {
@@ -549,4 +552,13 @@
 .gen-title {
     margin-top: .5rem;
     font-size: 1rem;
+}
+
+.rules-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+    margin-top: 1.2rem;
 }

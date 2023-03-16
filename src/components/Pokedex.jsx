@@ -1,6 +1,7 @@
 import './Pokedex.css'
 import React from 'react';
 import { ImagePixelated } from "react-pixelate"
+import RulesModal from './RulesModal';
 
 function Pokedex({image, name, guess, setGuess, pixels, handleCheckGuess, gameState, pixelDensity, gensSelected, setGensSelected}) {
     function checkEnter(e) {
@@ -193,8 +194,10 @@ function Pokedex({image, name, guess, setGuess, pixels, handleCheckGuess, gameSt
                                 <button className="white-square"></button>
                             </div>
                         </div>
-                        <div className="large-round-button yellow">
-                            <div className="large-round-button-highlight"></div>
+                        <div className='rules-button'>
+                            <RulesModal />
+                            <div>How to</div>
+                            <div>Play</div>
                         </div>
                     </div>
 
