@@ -351,23 +351,12 @@
 .pokedex-right {
     width: 50%;
     height: 99.9%;
-    /* border: 3px solid black; */
     position: relative;    
     border-bottom: solid black 3px;
     border-bottom-right-radius: 20px;
 }
 
-/* #right-panel {
-    background-color: var(--main-bg-color);
-    box-sizing: border-box;
-    position: relative;
-    height: 100%;
-    width: 50%;
-    display: grid;
-    grid-template-rows: 24% repeat(4, 19%);
-
-  } */
-  .pokedex-right::before {
+.pokedex-right::before {
     content: '';
     position: absolute;
     left: -2px;
@@ -376,4 +365,4 @@
     height: 32.6rem;
     border-right: solid black 3px;
     border-bottom-right-radius: 20px;
-  }
+}
