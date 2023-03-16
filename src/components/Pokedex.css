@@ -34,7 +34,6 @@
 }
 
 .power-inner {
-    background-color: #3298cb;
     width: 4.1rem;
     height: 4.1rem;
     border: 4px black solid;
@@ -87,6 +86,9 @@
     background-color: green;
 }
 
+.blue {
+    background-color: #3298cb;
+}
 .left-svg {
     position: absolute;
     top: 2.5rem;
@@ -111,4 +113,236 @@
     width: 17rem;
     border: 4px solid black;
     border-bottom-left-radius: 15%;
+    display: flex;
+    flex-direction: column;
+}
+
+.top-screen-buttons, .main-screen{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.top-screen-buttons{
+    height: 1.5rem;
+    gap: .5rem
+}
+
+.top-button {
+    border: 2px solid black;
+    height: .6rem;
+    width: .6rem;
+    background-color: red;
+    border-radius: 60%;
+}
+
+.screen {
+    background-color: #98cb98;
+    height: 12rem;
+    width: 14rem;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.bottom-screen-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    /* padding: 0 1rem 0 1rem; */
+    /* margin-left: 2rem; */
+    /* margin-right: 2rem; */
+}
+
+.bottom-button {
+    margin-top: .5rem;
+    margin-left: 2rem;
+    background-color: red;
+    border: 2px solid black;
+    border-radius: 60%;
+    height: 2rem;
+    width: 2rem;
+    position: relative;
+
+}
+
+.bottom-button-highlight {
+    height: .5rem;
+    width: .5rem;
+    background-color: rgba(255, 255, 255, .8);
+    border-radius: 60%;
+    position: absolute;
+    top: 6px;
+    left: 7px;
+}
+
+.bottom-speaker {
+    padding-top: .5rem;
+    margin-right: 2rem;
+    /* display: inline-block;    */
+}
+.bar1, .bar2, .bar3 {
+    width: 35px;
+    height: 5px;
+    background-color: #333;
+    margin: 6px 0;
+}
+
+.main-buttons {
+    height: 13rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.start-select {
+    margin-top: .5rem;
+    display: flex;
+    justify-content: center;
+    gap: .5rem;
+}
+
+.thin-button {
+    height: .3rem;
+    width: 3rem;
+    border: 2px solid black;
+    border-radius: 4px;
+}
+
+.sticks{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    height: 12rem;
+    gap: 1rem;
+}
+
+.round-stick {
+    height: 3rem;
+    width: 3rem;
+    background-color: gray;
+    border: 3px solid black;
+    border-radius: 60%;
+}
+
+.sticks-left {
+    height: 7rem;
+    width: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: black */
+}
+
+.left-tiny-buttons {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.sticks-center {
+    height: 3rem;
+    width: 8rem;
+    border: 3px solid black;
+    background-color: #3ab47d;
+    border-radius: 8px;
+}
+
+.sticks-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    height: 6.5rem;
+    width: 7rem;
+}
+
+
+
+.nav-direction {
+    height: 52px;
+    width: 52px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-button-vertical {
+    position: absolute;
+    transform: rotate(90deg);
+    background-color: gray;
+    border-radius: 5px;
+    height: 18px;
+    width: 77px;
+    border: 2px solid black;
+}
+
+.nav-button-horizontal {
+    position: absolute;
+    background-color: gray;
+    border-radius: 5px;
+    height: 18px;
+    width: 77px;
+    border: 2px solid black;
+}
+
+.nav-center-circle {
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+    border: solid black 2px;
+    z-index: +2;
+}
+
+.border-top {
+    border-top: 3.5px solid gray;
+    position: absolute;
+    top: -2px;
+    left: 28.5px;
+    right: 30px;
+}
+
+.border-bottom {
+    border-top: 3.5px solid gray;
+    position: absolute;
+    top: 16.5px;
+    left: 28.5px;
+    right: 30px;
+  }
+
+.bottom-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.med-button {
+    height: 1rem;
+    width: 1rem;
+    border: 3px solid black;
+    border-radius: 60%;
+    position: relative;
+}
+
+.med-button-highlight {
+    position: absolute;
+    top: 3.5px;
+    left: 3.5px;
+    background-color: rgba(255, 255, 255, .8);
+    height: .3rem;
+    width: .3rem;
+    border-radius: 60%;
+}
+.right-tiny-buttons {
+    display: flex;
+    gap: .2rem;
+}
+.tiny-button {
+    border: 2px solid black;
+    border-radius: 60%;
+    height: 0;
 }
