@@ -92,6 +92,22 @@ function Pokedex() {
                     </div>
                 </div>
             </div>
+
+            <div className="pokedex-right">
+                <div class="empty-container">
+                    <svg height="200px" width="400px">
+                        <polyline
+                        points="0,0 0,71 278,71 298,118 400,118 400,0 0,0"
+                        style={{fill: 'white', stroke: 'none', strokeWidth: '3'}}
+                        />
+                        {/* 0,75 95,75 125,28 400,28 */}
+                        <polyline
+                        points="0,71 278,71 298,118 400,118"
+                        style={{fill: 'none', stroke: 'black', strokeWidth: '3'}}
+                        />
+                    </svg>
+                </div>
+            </div>
         </div>
     );
 }
