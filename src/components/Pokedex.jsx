@@ -95,7 +95,7 @@ function Pokedex() {
 
             <div className="pokedex-right">
                 <div class="empty-container">
-                    <svg height="200px" width="400px">
+                    <svg height="125px" width="400px">
                         <polyline
                         points="0,0 0,71 278,71 298,118 400,118 400,0 0,0"
                         style={{fill: 'white', stroke: 'none', strokeWidth: '3'}}
@@ -106,6 +106,50 @@ function Pokedex() {
                         style={{fill: 'none', stroke: 'black', strokeWidth: '3'}}
                         />
                     </svg>
+                </div>
+                <div className="interface">
+                    <div className="secondary-screen"></div>
+                    <div className="gen-buttons">
+                        <button className="square-button blue"></button>
+                        <button className="square-button blue"></button>
+                        <button className="square-button blue"></button>
+                        <button className="square-button blue"></button>
+                        <button className="square-button blue"></button>
+                        <button className="square-button blue"></button>
+                        <button className="square-button blue"></button>
+                        <button className="square-button blue"></button>
+                        <button className="square-button blue"></button>
+                        <button className="square-button blue"></button>
+                    </div>
+                    <div className="right-thin-buttons">
+                        <div className="square-thin-button gray"></div>
+                        <div className="square-thin-button gray"></div>
+                    </div>
+
+                    <div className="right-middle-buttons">
+                        <div className="stacked-middle">
+                            <div className="stacked-circles">
+                                <div className="med-button red">
+                                            <div className="med-button-highlight"></div>
+                                </div>                                
+                                <div className="med-button red">
+                                            <div className="med-button-highlight"></div>
+                                </div>                                
+                            </div>
+                            <div className="stacked-squares">
+                                <div className="square-button white"></div>
+                                <div className="square-button white"></div>
+                            </div>
+                        </div>
+                        <div className="large-round-button yellow">
+                            <div className="large-round-button-highlight"></div>
+                        </div>
+                    </div>
+
+                    <div className="right-bottom">
+                        <div className="sticks-center"></div>
+                        <div className="sticks-center"></div>
+                    </div>
                 </div>
             </div>
         </div>
