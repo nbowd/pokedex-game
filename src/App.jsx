@@ -35,8 +35,6 @@ function App() {
 
     while(valid_id === false) {
       id = Math.floor(Math.random() * 1011) + 1;
-      console.log(ranges)
-      console.log(id)
 
       if (ranges.some((a) => id >= a[0] && id < a[1])){
         valid_id = true;
@@ -44,7 +42,6 @@ function App() {
     }
 
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
-    console.log('id chosen', id)
     const newPokemon = await response.json();
     setPokemon(newPokemon)
   }
