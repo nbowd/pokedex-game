@@ -10,9 +10,35 @@
 .title-text {
   margin-top: 2rem;
   margin-bottom: 2rem;
+  width: 20rem;
 }
 
 body {
   margin: 0;
   background-color: #b8b8b8;
+}
+
+
+@media screen and (max-height: 870px) {
+  .App {
+    flex-direction: row;
+    height: 100vh;
+
+  }
+
+  .title-text {
+    margin-right: 2rem;
+    width: 20rem;
+  }
+}
+
+
+@media screen and (max-width: 1200px) {
+
+  .App {
+    height: 100vh;
+  }
+  .title-text{
+    display: none;
+  }
 }
