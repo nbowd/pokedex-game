@@ -10,6 +10,24 @@ function Pokedex({image, name, guess, setGuess, pixels, handleCheckGuess, gameSt
         }
     }
 
+    function createGenButtons() {
+        const buttons = [];
+
+        for (let index = 0; index < 9; index++) {
+            const genNumber = index + 1;
+            buttons.push(
+                <button className={`square-button periwinkle ${gensSelected.includes(`gen${genNumber}`)? 'pressed': ''}`} onClick={(e) => handleGenSelection(e, `gen${genNumber}`)} >{genNumber}</button>
+            )
+        }
+
+        return (
+            <div className="gen-buttons">
+                {buttons.map(button => button)}
+                <button className="square-button periwinkle" ></button>
+            </div>
+        )
+    }
+
     function handleEnter() {
         handleCheckGuess();
         setGuess('')
@@ -50,7 +68,6 @@ function Pokedex({image, name, guess, setGuess, pixels, handleCheckGuess, gameSt
                 </div>
                 <svg height="100" width="400" className="left-svg">
                     <polyline
-                    // points="0,25 70,25 125,3 400,3"
                     points="0,75 95,75 125,28 400,28"
                     style={{fill: "none", stroke: "black", strokeWidth: "3"}}
                     />
@@ -161,19 +178,8 @@ function Pokedex({image, name, guess, setGuess, pixels, handleCheckGuess, gameSt
                     </div>
 
                     <div className='gen-title'>Generations</div>
+                    {createGenButtons()}
 
-                    <div className="gen-buttons">
-                        <button className={`square-button periwinkle ${gensSelected.includes('gen1')? 'pressed': ''}`} onClick={(e) => handleGenSelection(e, 'gen1')} >1</button>
-                        <button className={`square-button periwinkle ${gensSelected.includes('gen2')? 'pressed': ''}`} onClick={(e) => handleGenSelection(e, 'gen2')} >2</button>
-                        <button className={`square-button periwinkle ${gensSelected.includes('gen3')? 'pressed': ''}`} onClick={(e) => handleGenSelection(e, 'gen3')} >3</button>
-                        <button className={`square-button periwinkle ${gensSelected.includes('gen4')? 'pressed': ''}`} onClick={(e) => handleGenSelection(e, 'gen4')} >4</button>
-                        <button className={`square-button periwinkle ${gensSelected.includes('gen5')? 'pressed': ''}`} onClick={(e) => handleGenSelection(e, 'gen5')} >5</button>
-                        <button className={`square-button periwinkle ${gensSelected.includes('gen6')? 'pressed': ''}`} onClick={(e) => handleGenSelection(e, 'gen6')} >6</button>
-                        <button className={`square-button periwinkle ${gensSelected.includes('gen7')? 'pressed': ''}`} onClick={(e) => handleGenSelection(e, 'gen7')} >7</button>
-                        <button className={`square-button periwinkle ${gensSelected.includes('gen8')? 'pressed': ''}`} onClick={(e) => handleGenSelection(e, 'gen8')} >8</button>
-                        <button className={`square-button periwinkle ${gensSelected.includes('gen9')? 'pressed': ''}`} onClick={(e) => handleGenSelection(e, 'gen9')} >9</button>
-                        <button className="square-button periwinkle" ></button>
-                    </div>
                     <div className="right-thin-buttons">
                         <div className="square-thin-button gray"></div>
                         <div className="square-thin-button gray"></div>
