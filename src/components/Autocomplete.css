@@ -1,0 +1,19 @@
+.autocomplete-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.autocomplete-inner {
+  display: flex;
+}
+
+.dropdown {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-row {
+  cursor: pointer;
+  text-align: start;
+}
