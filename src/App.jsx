@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import './App.css'
-import Pokedex from './components/Pokedex';
+import Pokedex from './scenes/Pokedex';
 
 import titleText from './assets/pokemonTitle.png'
 
