@@ -2,28 +2,29 @@ import './Pokedex.css'
 import React from 'react';
 import { ImagePixelated } from "react-pixelate"
 import RulesModal from './RulesModal';
+import Autocomplete from '../components/Autocomplete';
 
 function Pokedex({image, name, guess, setGuess, pixels, handleCheckGuess, gameState, pixelDensity, gensSelected, setGensSelected}) {
-    function checkEnter(e) {
-        if (e.key === 'Enter') { 
-            handleEnter();
-        }
-    }
-
     function createGenButtons() {
         const buttons = [];
 
         for (let index = 0; index < 9; index++) {
             const genNumber = index + 1;
             buttons.push(
-                <button className={`square-button periwinkle ${gensSelected.includes(`gen${genNumber}`)? 'pressed': ''}`} onClick={(e) => handleGenSelection(e, `gen${genNumber}`)} >{genNumber}</button>
+                <button
+                    key={`gen-${index+1}`}
+                    className={`square-button periwinkle ${gensSelected.includes(`gen${genNumber}`)? 'pressed': ''}`}
+                    onClick={(e) => handleGenSelection(e, `gen${genNumber}`)} 
+                >
+                    {genNumber}
+                </button>
             )
         }
 
         return (
             <div className="gen-buttons">
                 {buttons.map(button => button)}
-                <button className="square-button periwinkle" ></button>
+                <button className="square-button periwinkle"></button>
             </div>
         )
     }
@@ -162,14 +163,12 @@ function Pokedex({image, name, guess, setGuess, pixels, handleCheckGuess, gameSt
                 </div>
                 <div className="interface">
                     <div className="secondary-screen" >
-                        <input 
-                            type="text" 
-                            spellCheck="false" 
-                            className="guess-input" 
-                            value={guess} 
-                            placeholder={gameState === ''? 'Guess Name': `You ${gameState}`} 
-                            onChange={(e) => setGuess(e.target.value)} 
-                            onKeyUp={(e)=>checkEnter(e)} disabled={gameState !== ''} maxLength="12"
+                        <Autocomplete
+                            guess={guess}
+                            setGuess={setGuess}
+                            gameState={gameState}
+                            className={'guess-input'}
+                            handleEnter={handleEnter}
                         />
                         <button 
                             className="guess-enter" 
@@ -178,6 +177,7 @@ function Pokedex({image, name, guess, setGuess, pixels, handleCheckGuess, gameSt
                     </div>
 
                     <div className='gen-title'>Generations</div>
+                    
                     {createGenButtons()}
 
                     <div className="right-thin-buttons">

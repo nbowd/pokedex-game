@@ -1,31 +1,68 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import './Autocomplete.css'
 import pokemonNames from '../assets/data/pokemonNames';
 
-function Autocomplete() {
-  const [value, setValue] = useState('');
+function Autocomplete({guess, setGuess, gameState, className, handleEnter}) {
+  const [dropdownVisible, setDropdownVisible] = useState(false);
 
   const onChange = (event) => {
-    setValue(event.target.value);
+    setGuess(event.target.value);
+    setDropdownVisible(true)
   }
+
+  const onDropdownSelect = (item) => {
+    setGuess(item)
+    setDropdownVisible(false)
+  }
+
+  const checkEnter = (e) => {
+    if (e.key === 'Enter') { 
+        handleEnter();
+        setDropdownVisible(false)
+    }
+  }
+
+  const filteredPokemonNames = useMemo(() => {
+    return pokemonNames.filter(item => {
+      const searchTerm = guess.toLowerCase();
+      const fullName = item.toLowerCase();
+  
+      return searchTerm && fullName.includes(searchTerm) && fullName !== searchTerm
+    });
+  }, [pokemonNames, guess]);
 
   return (
     <div className="autocomplete-container">
       <div className="autocomplete-inner">
-        <input type="text" value={value} onChange={onChange}/>
-        <button onClick={()=> console.log('search',value)}>Search</button>
+        <input
+          type="text"
+          value={guess}
+          onChange={onChange}
+          className={className}
+          placeholder={gameState === ''? 'Guess Name': `You ${gameState}`}
+          onKeyUp={(e)=>checkEnter(e)} 
+          disabled={gameState !== ''} 
+          maxLength="12"
+        />
       </div>
-      <div className="dropdown">
-        {pokemonNames.filter(item => {
-          const searchTerm = value.toLowerCase();
-          const fullName = item.toLowerCase();
-
-          return searchTerm && fullName.includes(searchTerm) && fullName !== searchTerm
-        }).slice(0,15)
-        .map((item, index) => (
-          <div onClick={() => setValue(item)} className="dropdown-row" key={`pokemon ${index+1}`}>{item}</div>
-        ))}
-      </div>
+      {
+        dropdownVisible &&
+        <div className="dropdown">
+        {
+          filteredPokemonNames.length > 0
+            ? filteredPokemonNames.slice(0, 10).map((item, index) => (
+                <div 
+                  className="dropdown-row"
+                  onClick={() => onDropdownSelect(item)}
+                  key={`pokemon-${index+1}`}
+                >
+                  {item}
+                </div>
+              ))
+            : setDropdownVisible(false)
+        }
+        </div> 
+      }
     </div>
   )
 }
